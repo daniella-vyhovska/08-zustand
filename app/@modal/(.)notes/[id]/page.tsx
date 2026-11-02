@@ -25,3 +25,14 @@ export default async function NotePreviewPage({
     </HydrationBoundary>
   );
 }
+
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const note = await fetchNoteById(id);
+
+  return {
+    title: `Preview: ${note.title} — NoteHub`,
+    description: `Preview of note: ${note.title}`,
+  };
+}

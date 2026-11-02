@@ -20,3 +20,11 @@ export default function HomePage() {
     </main>
   );
 }
+
+export function generateMetadata() {
+  return {
+    title: "NoteHub — Your personal notes manager",
+    description:
+      "NoteHub helps you organize, search and manage personal notes efficiently.",
+  };
+}
