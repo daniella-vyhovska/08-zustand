@@ -15,9 +15,9 @@ export default function NoteForm() {
   const mutation = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
-      clearDraft(); // очищаємо чернетку
+      clearDraft();
       queryClient.invalidateQueries({ queryKey: ["notes"] });
-      router.push("/notes/filter/all"); // повертаємося на список
+      router.push("/notes/filter/all");
     },
   });
 
@@ -34,7 +34,7 @@ export default function NoteForm() {
           id="title"
           type="text"
           className={styles.input}
-          defaultValue={draft.title}
+          value={draft.title}
           onChange={(e) => setDraft({ title: e.target.value })}
           placeholder="Enter note title"
         />
@@ -46,7 +46,7 @@ export default function NoteForm() {
           id="content"
           rows={8}
           className={styles.textarea}
-          defaultValue={draft.content}
+          value={draft.content}
           onChange={(e) => setDraft({ content: e.target.value })}
           placeholder="Enter note content"
         />
@@ -57,7 +57,7 @@ export default function NoteForm() {
         <select
           id="tag"
           className={styles.select}
-          defaultValue={draft.tag}
+          value={draft.tag}
           onChange={(e) => setDraft({ tag: e.target.value })}
         >
           <option value="Todo">Todo</option>
